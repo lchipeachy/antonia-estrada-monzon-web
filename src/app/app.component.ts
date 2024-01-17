@@ -6,9 +6,6 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: '<router-outlet />',
 })
-export class AppComponent {
-  title = 'antonia-estrada-monzon-web';
-}
+export class AppComponent {}
