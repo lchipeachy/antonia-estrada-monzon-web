@@ -1,0 +1,58 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fs-5 mb-2 text-uppercase">
+                Colegio Antonia Estrada Monzón
+              </h2>
+              <h2 class="fw-bold mb-2 text-primary-emphasis text-uppercase">
+                Bienvenido
+              </h2>
+              <p class="text-body-secondary mb-5">
+                Ingrese su correo y su contraseña para entrar.
+              </p>
+
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon3"
+                    >Usuario</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="basic-url"
+                    aria-describedby="basic-addon3 basic-addon4"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-5">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon3"
+                    >Contraseña</span
+                  >
+                  <input
+                    [type]="eyeIconState() ? 'text' : 'password'"
+                    class="form-control"
+                    id="basic-url"
+                    aria-describedby="basic-addon3 basic-addon4"
+                  />
+                  <button (click)="changeEyeIconState()" class="input-group-text" id="basic-addon3">
+                    <img [src]="eyeIconState() ? '../../../assets/icons/eye-slash.svg' : '../../../assets/icons/eye.svg'" alt="eye icon" />
+                  </button>
+                </div>
+              </div>
+
+              <button class="btn btn-outline-primary btn-lg px-5" type="submit">
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
