@@ -8,7 +8,6 @@ import { ToolbarComponent } from '@components/toolbar';
   standalone: true,
   imports: [FooterComponent, SidebarComponent, ToolbarComponent],
   template: `
-    <app-sidebar />
     <app-toolbar />
     <p>layout works!</p>
     <app-footer />

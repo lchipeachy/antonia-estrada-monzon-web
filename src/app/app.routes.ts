@@ -10,4 +10,8 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/pages.routes').then((c) => c.pagesRoutes),
   },
+  {
+    path: '**',
+    redirectTo: '',
+  }
 ];

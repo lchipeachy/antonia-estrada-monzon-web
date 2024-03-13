@@ -4,13 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-toolbar',
   standalone: true,
   imports: [],
-  template: `
-    <p>
-      toolbar works!
-    </p>
-  `,
-  styles: ``
+  template: ``,
+  styles: ``,
 })
-export class ToolbarComponent {
-
-}
+export class ToolbarComponent {}

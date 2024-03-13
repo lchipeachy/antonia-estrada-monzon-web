@@ -1,58 +1,46 @@
-<section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card" style="border-radius: 1rem">
-          <div class="card-body p-5 text-center">
-            <div class="mb-md-5 mt-md-4 pb-5">
-              <h2 class="fs-5 mb-2 text-uppercase">
-                Colegio Antonia Estrada Monzón
-              </h2>
-              <h2 class="fw-bold mb-2 text-primary-emphasis text-uppercase">
-                Bienvenido
-              </h2>
-              <p class="text-body-secondary mb-5">
-                Ingrese su correo y su contraseña para entrar.
-              </p>
-
-              <div class="mb-3">
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon3"
-                    >Usuario</span
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="basic-url"
-                    aria-describedby="basic-addon3 basic-addon4"
-                  />
-                </div>
-              </div>
-
-              <div class="mb-5">
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon3"
-                    >Contraseña</span
-                  >
-                  <input
-                    [type]="eyeIconState() ? 'text' : 'password'"
-                    class="form-control"
-                    id="basic-url"
-                    aria-describedby="basic-addon3 basic-addon4"
-                  />
-                  <button (click)="changeEyeIconState()" class="input-group-text" id="basic-addon3">
-                    <img [src]="eyeIconState() ? '../../../assets/icons/eye-slash.svg' : '../../../assets/icons/eye.svg'" alt="eye icon" />
-                  </button>
-                </div>
-              </div>
-
-              <button class="btn btn-outline-primary btn-lg px-5" type="submit">
-                Continuar
-              </button>
-            </div>
-          </div>
-        </div>
+<section
+  class="h-screen flex items-center justify-content-center"
+  style="
+    background-image: radial-gradient(
+      farthest-corner circle at 100% 0% in oklab,
+      oklch(61.12% 0.107 229.43) 0%,
+      oklch(80.26% 0.04 230.35) 100%
+    );
+  "
+>
+  <div class="card flex justify-content-center px-4 my-auto">
+    <p-card class="shadow-1" [style]="{ width: '280px' }">
+      <div class="flex justify-content-center text-center">
+        <h1>Escuela Antonia Estrada Monzón</h1>
       </div>
-    </div>
+
+      <form
+        [formGroup]="loginForm()"
+        class="w-full mt-6"
+        (ngSubmit)="sendLogin()"
+      >
+        <span class="p-float-label mt-5 mb-2">
+          <input class="w-14rem" type="text" pInputText />
+          <label for="password">Contraseña</label>
+        </span>
+
+        <span class="p-float-label mt-5 mb-2">
+          <p-password
+            [feedback]="false"
+            [toggleMask]="true"
+            class="w-15rem"
+          ></p-password>
+          <label for="password">Contraseña</label>
+        </span>
+
+        <small class="hidden text-red-300 mt-3"
+          >*Correo o contraseña no encontrado</small
+        >
+
+        <div class="card flex justify-content-center mt-5">
+          <p-button type="submit" label="Iniciar sesión"></p-button>
+        </div>
+      </form>
+    </p-card>
   </div>
 </section>
