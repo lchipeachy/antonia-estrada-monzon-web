@@ -15,7 +15,8 @@ import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ValidatorsService } from '../../services';
+import { AuthService, ValidatorsService } from '../../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,8 @@ import { ValidatorsService } from '../../services';
 export class LoginComponent {
   #fb = inject(FormBuilder);
   #validatorsService = inject(ValidatorsService);
+  #authService = inject(AuthService);
+  #router = inject(Router);
 
   loginForm = signal<FormGroup>(
     this.#fb.group({
@@ -48,5 +51,25 @@ export class LoginComponent {
     })
   );
 
-  sendLogin() {}
+  onLogin() {
+    if (this.loginForm().invalid) this.loginForm().markAllAsTouched();
+
+    this.#authService
+      .login(this.loginForm().value)
+      .then((response) => {
+        console.log(response);
+        this.#router.navigate(['/dashboard']);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  onGooglePop() {
+    this.#authService
+      .loginWithGoogle()
+      .then((response) => {
+        console.log(response);
+        this.#router.navigate(['/dashboard']);
+      })
+      .catch((error) => console.log(error));
+  }
 }

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FooterComponent } from '@components/footer';
 import { SidebarComponent } from '@components/sidebar';
 import { ToolbarComponent } from '@components/toolbar';
+import { AuthService } from '../../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -10,8 +12,19 @@ import { ToolbarComponent } from '@components/toolbar';
   template: `
     <app-toolbar />
     <p>layout works!</p>
+    <button (click)="onSignOut()">Salir</button>
     <app-footer />
   `,
   styles: ``,
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  #authService = inject(AuthService);
+  #router = inject(Router);
+
+  onSignOut() {
+    this.#authService
+      .logout()
+      .then(() => this.#router.navigate(['/']))
+      .catch((error) => console.log(error));
+  }
+}

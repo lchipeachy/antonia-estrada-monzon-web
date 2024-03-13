@@ -17,17 +17,23 @@
       <form
         [formGroup]="loginForm()"
         class="w-full mt-6"
-        (ngSubmit)="sendLogin()"
+        (ngSubmit)="onLogin()"
       >
         <span class="p-float-label mt-5 mb-2">
-          <input class="w-14rem" type="text" pInputText />
-          <label for="password">Contraseña</label>
+          <input
+            class="w-14rem"
+            formControlName="email"
+            type="text"
+            pInputText
+          />
+          <label for="email">Correo Electrónico</label>
         </span>
 
         <span class="p-float-label mt-5 mb-2">
           <p-password
             [feedback]="false"
             [toggleMask]="true"
+            formControlName="password"
             class="w-15rem"
           ></p-password>
           <label for="password">Contraseña</label>
@@ -41,6 +47,7 @@
           <p-button type="submit" label="Iniciar sesión"></p-button>
         </div>
       </form>
+      <p-button (click)="onGooglePop()" icon="pi pi-google" />
     </p-card>
   </div>
 </section>
