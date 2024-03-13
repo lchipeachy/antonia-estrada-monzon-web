@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
-import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import {
+  canActivate,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
+    ...canActivate(() => redirectLoggedInTo(['/dashboard'])),
     loadComponent: () => import('./auth/login').then((c) => c.LoginComponent),
   },
   {
