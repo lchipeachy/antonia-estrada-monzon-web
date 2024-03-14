@@ -15,7 +15,7 @@ import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { AuthService, ValidatorsService } from '../../services';
+import { AuthService, ToastService, ValidatorsService } from '../../services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,6 +37,7 @@ export class LoginComponent {
   #validatorsService = inject(ValidatorsService);
   #authService = inject(AuthService);
   #router = inject(Router);
+  #toastService = inject(ToastService);
 
   loginForm = signal<FormGroup>(
     this.#fb.group({
@@ -60,7 +61,14 @@ export class LoginComponent {
         console.log(response);
         this.#router.navigate(['/dashboard']);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        this.#toastService.show({
+          severity: 'error',
+          summary: 'Error al iniciar sesión',
+          detail: 'Credenciales invalidas',
+        });
+      });
   }
 
   onGooglePop() {
@@ -70,6 +78,13 @@ export class LoginComponent {
         console.log(response);
         this.#router.navigate(['/dashboard']);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        this.#toastService.show({
+          severity: 'error',
+          summary: 'Error al iniciar sesión',
+          detail: 'Credenciales invalidas',
+        });
+      });
   }
 }

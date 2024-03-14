@@ -1,3 +1,3 @@
-export * from './footer';
-export * from './sidebar';
-export * from './toolbar';
+export * from './footer.component';
+export * from './sidebar.component';
+export * from './toolbar.component';
